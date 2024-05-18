@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Tela de Login</title>
+    <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body class="login-body">
+    <h:form id="loginForm" class="login-form">
+        <p:panel header="Login" style="width: 300px;">
+            <p:messages id="msgs" showDetail="false" closable="true" />
+            <p:outputLabel for="login" value="Login:" />
+            <br/>
+            <p:inputText id="login" value="#{loginBean.login}" style="width: 100%;" required="true" />
+			<br/>
+            <p:outputLabel for="password" value="Senha:" />
+            <br/>
+            <p:password id="password" value="#{loginBean.senha}" style="width: 100%;" required="true" feedback="true" />
+			<br/><br/>
+            <p:commandButton value="Entrar" action="#{loginBean.realizarLogin()}"  update="msgs" />
+            <br/><br/>
+            <p:button value="Recuperar senha" outcome="recuperaTorcaSenha" />
+            <br/><br/>
+            <p:button value="Agendamento" outcome="index" />
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

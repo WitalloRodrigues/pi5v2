@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Listar Médicos</title>
+    <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+    <h:form id="listarMedicosForm" class="area-adm-form">
+    <h:outputText value="Olá, #{sessionUtils.getUsuarioLogado().nome}!" styleClass="welcome-text"/><br/>
+        <h2>Listagem de Médicos</h2>
+        <p:button value="Adicionar Medico" outcome="cadastroMedico" />
+        
+        <p:button value="Area Adiministrativa" outcome="areaAdm" />
+        <p:dataTable id="medicosTable" var="medico" value="#{medicoBean.medicos}" paginator="true" rows="10">
+            <p:column headerText="ID">
+                <h:outputText value="#{medico.id}" />
+            </p:column>
+            <p:column headerText="Nome">
+                <h:outputText value="#{medico.nome}" />
+            </p:column>
+            <p:column headerText="Ações">
+                <p:commandButton value="Editar" action="#{medicoBean.editar(medico)}" update="@form"/>
+                <p:commandButton value="Excluir" action="#{medicoBean.excluir(medico)}" update="@form"/>
+            </p:column>
+        </p:dataTable>
+        
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Área Administrativa</title>
+    <h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+    <h:form id="areaAdmForm" class="area-adm-form">
+        <h2>Área Administrativa</h2>
+        
+        <h:outputText value="Olá, #{sessionUtils.getUsuarioLogado().nome}!" styleClass="welcome-text"/><br/>
+
+        <p:panel header="Opções de Administração" style="width: 300px;">
+            <p:commandButton value="Gerenciar Médicos" action="listarMedicos.xhtml" styleClass="admin-button" />
+            <br/>
+            <br/>
+            <p:commandButton value="Gerenciar Agendamentos" action="agendamentosAdm.xhtml" styleClass="admin-button" />
+            <br/>
+            <br/>
+            <p:commandButton action="#{loginBean.logout()}" value="Sair" />
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
